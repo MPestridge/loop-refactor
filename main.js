@@ -14,18 +14,17 @@ module.exports = {
 
   sum: (arr, base) => {
     let sum = base;
-    for (var i = 0; i < arr.length; i++){
-      sum += arr[i];
-    }
-    return sum;
+    return arr.reduce((prev, base) => {
+      return base += prev;
+    }, base);
   },
 
   someObjsContainProp: (arr, prop) => {
-    for(var i = 0; i < arr.length; i++){
-      if(arr[i].hasOwnProperty(prop)){
+    return arr.some(function (val) {
+      if (val.hasOwnProperty(prop)) {
         return true;
       }
-    }
+    })
     return false;
   },
 
