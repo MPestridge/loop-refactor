@@ -29,32 +29,26 @@ module.exports = {
   },
 
   convertNameArrayToObject: (arr) => {
-    let nameObj = [];
-    for(var i = 0; i < arr.length; i++){
+    return arr.map(function(arr) {
       let obj = {};
-      obj.first = arr[i][0];
-      obj.last = arr[i][1];
-      nameObj.push(obj);
-    }
-    return nameObj;
+      obj.first = arr[0];
+      obj.last = arr[1];
+      return obj;
+    })
   },
 
   objContainsProp: (arr, prop) => {
-    for (var i = 0; i < arr.length; i++){
-      if(!arr[i].hasOwnProperty(prop)){
-        return false;
+    return arr.every(function (val) {
+      if (val.hasOwnProperty(prop)) {
+        return true;
       }
-    }
-    return true;
+    })
+    return false;
   },
 
   stringMatch: (arr, str) => {
-    let matches = [];
-    for(var i = 0; i < arr.length; i++){
-      if (arr[i].includes(str)){
-        matches.push(arr[i]);
-      }
-    }
-    return matches;
+    return arr.filter(function(element){
+      return (element.indexOf(str)) > -1;
+    })
   },
 };
